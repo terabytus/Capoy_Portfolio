@@ -167,7 +167,7 @@ const Footer = () => {
               reserved.
             </span>
           </div>
-        </div>
+        </div> 
       </div>
     </footer>
   );
