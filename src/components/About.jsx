@@ -10,7 +10,7 @@ const About = () => {
     <section
       id="about"
       ref={aboutRef}
-      className="relative grid grid-cols-12 gap-6 py-24 bg-[var(--color-dark)] transition-all duration-1000 overflow-hidden film-grain grain-effect px-4 sm:px-6 md:px-8"
+      className="relative grid grid-cols-12 gap-6 py-24 bg-[var(--color-dark)] transition-all duration-1000 overflow-hidden film-grain grain-effect px-4 sm:px-2 md:px-0"
     >
       {/* Floating Japanese elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

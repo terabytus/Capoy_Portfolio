@@ -30,7 +30,12 @@ const Contacts = () => {
       emailjs.init(publicKey);
       console.log("EmailJS initialized successfully");
     } else {
-      console.error("EmailJS Public Key not found in environment variables");
+      console.error(
+        "EmailJS Public Key not found in environment variables. Please check your .env file."
+      );
+      setSubmitError(
+        "Email service not properly configured. Please contact directly via LinkedIn."
+      );
     }
   }, []);
 
@@ -79,31 +84,19 @@ const Contacts = () => {
       reply_to: formData.email,
     };
 
+    // Get values from .env file
+    const serviceID =
+      import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_abel71y";
+    const templateID =
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_bidhr1g";
+
     console.log("Sending email with params:", templateParams);
-    console.log("Service ID:", "service_abel71y");
-    console.log("Template ID:", "template_bidhr1g");
+    console.log("Service ID:", serviceID);
+    console.log("Template ID:", templateID);
 
     try {
-      let result;
-
-      try {
-        // First try: Use sendForm method (more reliable for CORS)
-        const form = e.target;
-        result = await emailjs.sendForm(
-          "service_abel71y",
-          "template_bidhr1g",
-          form
-        );
-      } catch (formError) {
-        console.log("sendForm failed, trying send method:", formError);
-
-        // Fallback: Use send method with template parameters
-        result = await emailjs.send(
-          "service_abel71y",
-          "template_bidhr1g",
-          templateParams
-        );
-      }
+      // Use send method with template parameters (more reliable)
+      const result = await emailjs.send(serviceID, templateID, templateParams);
 
       console.log("Email sent successfully:", result);
       setIsSubmitted(true);
@@ -148,7 +141,7 @@ const Contacts = () => {
   return (
     <section
       id="contact"
-      className="grid grid-cols-12 gap-6 py-24 bg-[var(--color-primary)] transition-all duration-1000 px-4 sm:px-6 md:px-8"
+      className="grid grid-cols-12 gap-6 py-24 bg-[var(--color-primary)] transition-all duration-1000 px-4 sm:px-2 md:px-0"
     >
       <div className="col-span-12 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
         <div className="max-w-6xl mx-auto relative">
@@ -210,6 +203,22 @@ const Contacts = () => {
               </svg>
             </div>
           </div>
+
+          {/* Visual Grid Overlay for Debugging Layout Consistency */}
+          {/* <div className="absolute inset-0 pointer-events-none z-0 opacity-50">
+            <div className="grid grid-cols-12 gap-6 h-full">
+              {Array.from({ length: 12 }, (_, i) => (
+                <div
+                  key={i}
+                  className="bg-red-500/20 border border-red-500/40 h-full flex items-center justify-center"
+                >
+                  <span className="text-red-600 font-mono text-xs transform rotate-90">
+                    {i + 1}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div> */}
 
           <div className="grid md:grid-cols-12 gap-12 items-start">
             {/* Contact Info (Left Side) */}
@@ -369,10 +378,10 @@ const Contacts = () => {
                 formVisible
                   ? "animate-fade-in-right"
                   : "opacity-0 translate-x-10"
-              }`}
+              } `}
               style={{ transitionDelay: formVisible ? "0ms" : "0ms" }}
             >
-              <h3 className="font-family-header text-3xl md:text-3xl mb-3 text-[var(--color-accent)]">
+              <h3 className="font-family-header text-3xl md:text-3xl mb-3 text-[var(--color-textmain)]">
                 Let's Work Together
               </h3>
 
@@ -491,22 +500,6 @@ const Contacts = () => {
           </div>
         </div>
       </div>
-
-      {/* Visual Grid Overlay for Debugging Layout Consistency */}
-      {/* <div className="absolute inset-0 pointer-events-none z-0 opacity-50">
-        <div className="grid grid-cols-12 gap-6 h-full">
-          {Array.from({ length: 12 }, (_, i) => (
-            <div
-              key={i}
-              className="bg-red-500/20 border border-red-500/40 h-full flex items-center justify-center"
-            >
-              <span className="text-red-600 font-mono text-xs transform rotate-90">
-                {i + 1}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div> */}
     </section>
   );
 };

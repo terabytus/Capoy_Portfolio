@@ -7,7 +7,7 @@ const Hero = () => {
     <section
       id="hero"
       ref={ref}
-      className={`relative grid grid-cols-12 gap-6 min-h-screen bg-[var(--color-primary)] transition-all duration-1000 overflow-hidden px-4 sm:px-6 md:px-8 ${
+      className={`relative grid grid-cols-12 gap-6 min-h-screen bg-[var(--color-primary)] transition-all duration-1000 overflow-hidden px-4 sm:px-2 md:px-0 ${
         isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
       }`}
     >
@@ -219,7 +219,7 @@ const Hero = () => {
         <h1 className="font-family-accent text-7xl sm:text-7xl md:text-9xl mb-4 text-[var(--color-accent)]">
           CHRISTIAN
         </h1>
-        <h2 className="font-family-header text-xl sm:text-3xl md:text-3xl mb-6 text-[var(--color-highlight)]">
+        <h2 className="font-family-subheader font-bold text-xl sm:text-3xl md:text-3xl mb-6 text-[var(--color-highlight)]">
           Frontend Developer & UI/UX Designer
         </h2>
 
