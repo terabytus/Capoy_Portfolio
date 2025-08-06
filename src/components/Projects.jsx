@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const projects = [
@@ -6,12 +7,22 @@ const projects = [
     title: "FreshClips",
     description:
       "A Digital Platform Enhancing Client Interaction and Modernizing the Hairstyling Industry",
-    image: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369743/Freshclips_Tarp_izuzei.png",
+    image:
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369743/Freshclips_Tarp_izuzei.png",
     role: "Designed & Developed",
     technologies: [
-      { name: "Flutter", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg" },
-      { name: "Firebase", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369667/firebase_fmdmuf.svg" },
-      { name: "Figma", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg" },
+      {
+        name: "Flutter",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
+      },
+      {
+        name: "Firebase",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369667/firebase_fmdmuf.svg",
+      },
+      {
+        name: "Figma",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
+      },
     ],
     link: "#",
     github: "#",
@@ -21,12 +32,22 @@ const projects = [
     title: "TaRIDES",
     description:
       "A Community-based Mobile Application Designed for Cyclists and Hobbyists",
-    image: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369417/tarides_tcwn1q.png",
+    image:
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369417/tarides_tcwn1q.png",
     role: "Designed & Developed some features",
     technologies: [
-      { name: "Flutter", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg" },
-      { name: "Firebase", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369667/firebase_fmdmuf.svg" },
-      { name: "Figma", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg" },
+      {
+        name: "Flutter",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
+      },
+      {
+        name: "Firebase",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369667/firebase_fmdmuf.svg",
+      },
+      {
+        name: "Figma",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
+      },
     ],
     link: "#",
     github: "#",
@@ -36,11 +57,18 @@ const projects = [
     title: "Mobile DTR",
     description:
       "From clock-in to clock-out, our All-in-One Employee DTR keeps your business running smoothly – anytime, anywhere.",
-    image: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369418/mobile_dtr_fjwpfv.png",
+    image:
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369418/mobile_dtr_fjwpfv.png",
     role: "Designed",
     technologies: [
-      { name: "Figma", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg" },
-      { name: "Flutter", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg" },
+      {
+        name: "Figma",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
+      },
+      {
+        name: "Flutter",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
+      },
     ],
     link: "#",
     github: "#",
@@ -50,9 +78,15 @@ const projects = [
     title: "HoneyPot (Design Concepts)",
     description:
       "The main purpose is to establish the general visual direction. The designs incorporate your current product photos and color palette for consistency",
-    image: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369420/design_concept_jh438z.png",
+    image:
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369420/design_concept_jh438z.png",
     role: "Developed some features and designed",
-    technologies: [{ name: "Figma", icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg" }],
+    technologies: [
+      {
+        name: "Figma",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
+      },
+    ],
     link: "#",
     github: "#",
   },
@@ -72,15 +106,45 @@ const projects = [
   // },
 ];
 
-const ProjectsSection = () => {
+const ProjectsSection = ({ shouldStartAnimation }) => {
+  const [visibleProjects, setVisibleProjects] = useState([]);
+
+  // Staggered animation effect for projects
+  useEffect(() => {
+    if (shouldStartAnimation) {
+      // Show first project immediately
+      setVisibleProjects([0]);
+      
+      // Show each project with a staggered delay
+      const timers = [];
+      
+      for (let i = 1; i < projects.length; i++) {
+        const timer = setTimeout(() => {
+          setVisibleProjects(prev => [...prev, i]);
+        }, i * 300); // 300ms stagger between each project
+        
+        timers.push(timer);
+      }
+      
+      return () => {
+        timers.forEach(timer => clearTimeout(timer));
+      };
+    }
+  }, [shouldStartAnimation]);
+
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {projects.map((project, idx) => (
           <div
             key={project.id}
-            className="group relative bg-dark/10 backdrop-blur-xl rounded-lg overflow-hidden border border-[var(--color-highlight)]/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(239,214,172,0.4)] hover:border-[var(--color-highlight)]/70 p-4 sm:p-6 h-64"
-            style={{ animationDelay: `${idx * 0.1}s` }}
+            className={`group relative bg-dark/10 backdrop-blur-xl rounded-lg overflow-hidden border border-[var(--color-highlight)]/20 transition-all duration-700 hover:scale-105 hover:shadow-[0_0_15px_rgba(239,214,172,0.4)] hover:border-[var(--color-highlight)]/70 p-4 sm:p-6 h-64 ${
+              visibleProjects.includes(idx) ? "animate-fade-in-up" : "opacity-0 translate-y-10"
+            }`}
+            style={{ 
+              animationDelay: `${idx * 300}ms`,
+              animationDuration: "1000ms"
+            }}
           >
             {/* Card Number */}
             <span className="font-family-header absolute top-3 left-3 sm:top-4 sm:left-4 text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--color-textmain)] select-none pointer-events-none z-20">
@@ -133,6 +197,18 @@ const ProjectsSection = () => {
 
 const Projects = () => {
   const [ref, isVisible] = useScrollAnimation(0.1);
+  const [titleAnimationComplete, setTitleAnimationComplete] = useState(false);
+
+  // Track when title animation completes
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setTitleAnimationComplete(true);
+      }, 700); // Title animation takes 700ms
+
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
 
   return (
     <section
@@ -232,7 +308,7 @@ const Projects = () => {
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
           }`}
         >
-          <ProjectsSection />
+          <ProjectsSection shouldStartAnimation={titleAnimationComplete} />
         </div>
       </div>
     </section>
