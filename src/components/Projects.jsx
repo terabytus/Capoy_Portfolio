@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import HybridProjectModal from "./HybridProjectModal";
 
 const projects = [
   {
     id: 1,
-    title: "FreshClips",
+    name: "FreshClips",
     description:
       "A Digital Platform Enhancing Client Interaction and Modernizing the Hairstyling Industry",
     image:
-      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369743/Freshclips_Tarp_izuzei.png",
-    role: "Designed & Developed",
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670957/freshclips_cover_ugg7uo.svg",
+    myRole: "Product Designer | Developer",
+    keyFeatures: [
+      "Seamless Appointment Scheduling: Book instantly with real-time availability and never wait in a line again.",
+      "Unified Barber Platform: Discover and book with both traditional barbershops and talented independent stylists in one app.",
+      "In-App Messaging: Communicate directly with your barber for service details, special requests, and appointment confirmations.",
+      "Location-Based Search: Find the best barbers and shops near you with a geolocation-powered search feature.",
+      "Verified Stylist Portfolios: View a barber's past work and personal style through a visual gallery, helping you book with confidence.",
+    ],
+    techStack: ["Flutter", "Firebase", "Figma"],
     technologies: [
       {
         name: "Flutter",
@@ -24,17 +33,27 @@ const projects = [
         icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
       },
     ],
-    link: "#",
-    github: "#",
+    liveDemoUrl: "#",
+    githubRepoUrl: "#",
+
+    problem:
+      "Clients and barbers are currently disconnected by an inefficient and fragmented booking ecosystem. Clients struggle to find and book appointments with trustworthy, quality barbers, leading to wasted time waiting in lines and uncertainty about service quality. Traditional methods are inconvenient and offer little transparency into a barber's specialized skills or hygiene standards. Freelance barbers and hairstylists, on the other hand, lack a centralized platform to manage their schedules, showcase their work, and grow their clientele beyond their personal networks. This creates a significant gap where both parties are looking for a better solution.",
   },
   {
     id: 2,
-    title: "TaRIDES",
+    name: "TaRIDES",
     description:
       "A Community-based Mobile Application Designed for Cyclists and Hobbyists",
     image:
-      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369417/tarides_tcwn1q.png",
-    role: "Designed & Developed some features",
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670960/tarides_cover_oxdcax.svg",
+    myRole: "Product Designer | Developer",
+    keyFeatures: [
+      "GPS-based route tracking and sharing system",
+      "Community features for cyclist groups and events",
+      "Performance analytics and ride statistics",
+      "Social networking features for cycling enthusiasts",
+    ],
+    techStack: ["Flutter", "Firebase", "Figma"],
     technologies: [
       {
         name: "Flutter",
@@ -49,17 +68,24 @@ const projects = [
         icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
       },
     ],
-    link: "#",
-    github: "#",
+    liveDemoUrl: "#",
+    githubRepoUrl: "#",
   },
   {
     id: 3,
-    title: "Mobile DTR",
+    name: "Mobile DTR",
     description:
       "From clock-in to clock-out, our All-in-One Employee DTR keeps your business running smoothly – anytime, anywhere.",
     image:
-      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369418/mobile_dtr_fjwpfv.png",
-    role: "Designed",
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670916/mobile_dtr_cover_olg97r.svg",
+    myRole: "Designed",
+    keyFeatures: [
+      "Biometric and QR code-based attendance system",
+      "Real-time attendance tracking and reporting",
+      "Geolocation-based check-in/check-out verification",
+      "Administrative dashboard for HR management",
+    ],
+    techStack: ["Figma", "Flutter"],
     technologies: [
       {
         name: "Figma",
@@ -70,127 +96,166 @@ const projects = [
         icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
       },
     ],
-    link: "#",
-    github: "#",
+    liveDemoUrl: "#",
+    githubRepoUrl: "#",
   },
   {
     id: 4,
-    title: "HoneyPot (Design Concepts)",
+    name: "Design Concepts",
     description:
       "The main purpose is to establish the general visual direction. The designs incorporate your current product photos and color palette for consistency",
     image:
       "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369420/design_concept_jh438z.png",
-    role: "Developed some features and designed",
+    myRole: "Developed some features and designed",
+    keyFeatures: [
+      "Brand identity and visual design system",
+      "UI/UX design for web and mobile platforms",
+      "Design documentation and style guides",
+      "Prototype development and user testing",
+    ],
+    techStack: ["Figma"],
     technologies: [
       {
         name: "Figma",
         icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
       },
     ],
-    link: "#",
-    github: "#",
+    liveDemoUrl: "#",
+    githubRepoUrl: "#",
   },
-  // {
-  //   id: 5,
-  //   title: "Weather Dashboard",
-  //   description: "A beautiful weather dashboard with location-based forecasts.",
-  //   image: sampleImage,
-  //   role: "Developed some features and designed",
-  //   technologies: [
-  //     { name: "React", icon: react },
-  //     { name: "JavaScript", icon: javascript },
-  //     { name: "CSS", icon: css },
-  //   ],
-  //   link: "#",
-  //   github: "#",
-  // },
 ];
 
 const ProjectsSection = ({ shouldStartAnimation }) => {
   const [visibleProjects, setVisibleProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [animationCompleted, setAnimationCompleted] = useState(false);
 
-  // Staggered animation effect for projects
+  // Staggered animation effect for projects - only run once
   useEffect(() => {
-    if (shouldStartAnimation) {
+    if (shouldStartAnimation && !animationCompleted) {
       // Show first project immediately
       setVisibleProjects([0]);
-      
+
       // Show each project with a staggered delay
       const timers = [];
-      
+
       for (let i = 1; i < projects.length; i++) {
         const timer = setTimeout(() => {
-          setVisibleProjects(prev => [...prev, i]);
+          setVisibleProjects((prev) => [...prev, i]);
         }, i * 300); // 300ms stagger between each project
-        
+
         timers.push(timer);
       }
-      
+
+      // Mark animation as completed
+      const finalTimer = setTimeout(() => {
+        setAnimationCompleted(true);
+      }, projects.length * 300 + 100);
+
+      timers.push(finalTimer);
+
       return () => {
-        timers.forEach(timer => clearTimeout(timer));
+        timers.forEach((timer) => clearTimeout(timer));
       };
+    } else if (animationCompleted && visibleProjects.length < projects.length) {
+      // If animation was completed but some projects aren't visible (e.g. after a component remount),
+      // make all projects visible immediately
+      setVisibleProjects(projects.map((_, i) => i));
     }
-  }, [shouldStartAnimation]);
+  }, [shouldStartAnimation, animationCompleted]);
+
+  // Handle card click
+  const handleCardClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  // Handle modal close
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => {
+      setSelectedProject(null);
+    }, 300);
+  };
+
+  // Handle overlay click
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      handleCloseModal();
+    }
+  };
+
+  // Handle escape key
+  useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.key === "Escape" && isModalOpen) {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [isModalOpen]);
 
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        {projects.map((project, idx) => (
-          <div
-            key={project.id}
-            className={`group relative bg-dark/10 backdrop-blur-xl rounded-lg overflow-hidden border border-[var(--color-highlight)]/20 transition-all duration-700 hover:scale-105 hover:shadow-[0_0_15px_rgba(239,214,172,0.4)] hover:border-[var(--color-highlight)]/70 p-4 sm:p-6 h-64 ${
-              visibleProjects.includes(idx) ? "animate-fade-in-up" : "opacity-0 translate-y-10"
-            }`}
-            style={{ 
-              animationDelay: `${idx * 300}ms`,
-              animationDuration: "1000ms"
-            }}
-          >
-            {/* Card Number */}
-            <span className="font-family-header absolute top-3 left-3 sm:top-4 sm:left-4 text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--color-textmain)] select-none pointer-events-none z-20">
-              {String(idx + 1).padStart(2, "0")}
-            </span>
+    <div className="flex flex-wrap gap-4 justify-center">
+      {projects.map((project, idx) => (
+        <div
+          key={project.id}
+          onClick={() => handleCardClick(project)}
+          className={`group bg-dark/10 backdrop-blur-lg overflow-hidden transition-all duration-700 hover:scale-105 hover: h-auto cursor-pointer ${
+            visibleProjects.includes(idx)
+              ? "animate-fade-in-up"
+              : "opacity-0 translate-y-10"
+          }`}
+          style={{
+            animationDuration: "1000ms",
+            flex: "1 1 458px",
+            minWidth: "300px",
+            maxWidth: "600px",
+          }}
+        >
+          {/* Project Image at the top */}
+          <div className="w-full h-56 sm:h-72 overflow-hidden mb-2 relative">
+            <img
+              src={project.image}
+              alt={project.name}
+              className="w-full h-full object-cover rounded-md transition-transform duration-500 ease-in-out group-hover:scale-110"
+            />
+          </div>
 
-            {/* Project Image Background - Always visible */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/80 to-transparent overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-100 object-cover rounded-sm transition-transform duration-500 ease-in-out group-hover:scale-110"
-              />
-              {/* Gradient Overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-            </div>
+          <div className="relative z-10 flex flex-col items-start">
+            <h3 className="font-family-subheader font-semibold text-lg sm:text-2xl text-[var(--color-highlight)] transition-colors duration-300 text-shadow">
+              {project.name}
+            </h3>
 
-            {/* Content - Always visible */}
-            <div className="relative z-10 h-full flex flex-col justify-end">
-              <div className="space-y-1">
-                <h3 className="font-family-subheader text-lg sm:text-xl font-bold text-[var(--color-highlight)] py-0 transition-colors duration-300 text-shadow">
-                  {project.title}
-                </h3>
-                <p className="font-family-subheader text-[10px] sm:text-xs text-[var(--color-textmain)] py-0 leading-relaxed transition-colors duration-300 text-shadow line-clamp-2">
-                  {project.description}
-                </p>
-
-                {/* Technologies at the bottom with icon and text */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {project.technologies.map((tech, techIdx) => (
-                    <div key={techIdx} className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-full flex items-center justify-center bg-black/50 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300">
-                        <img
-                          src={tech.icon}
-                          alt={tech.name}
-                          className="w-4 h-4"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="font-family-subheader text-[var(--color-textmain)]/40 flex flex-wrap gap-2 mb-2">
+              {project.myRole}
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+
+      {/* Modal */}
+      {isModalOpen && selectedProject && (
+        <HybridProjectModal
+          project={{
+            ...selectedProject,
+            heroImage: selectedProject.image,
+            problem: selectedProject.problem,
+            researchImage:
+              "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
+            wireframeImage:
+              "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
+            finalDesignImage: selectedProject.image,
+            keyFeatures: selectedProject.keyFeatures,
+          }}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };
@@ -303,13 +368,7 @@ const Projects = () => {
         </div>
 
         {/* Projects Section */}
-        <div
-          className={`transition-all duration-700 ${
-            isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <ProjectsSection shouldStartAnimation={titleAnimationComplete} />
-        </div>
+        <ProjectsSection shouldStartAnimation={titleAnimationComplete} />
       </div>
     </section>
   );

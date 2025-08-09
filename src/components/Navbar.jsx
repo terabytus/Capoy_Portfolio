@@ -54,11 +54,11 @@ const Navbar = () => {
     <>
       {/* Desktop Navbar */}
       <nav
-        className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 backdrop-blur-md text-[var(--color-highlight)] px-5 py-2.5 rounded-full shadow-2xl z-50 transition-all duration-1000 border border-[var(--color-highlight)]/5 ${
+        className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 backdrop-blur-md text-[var(--color-highlight)] px-2 py-1 rounded-full shadow-2xl z-50 transition-all duration-1000 border border-[var(--color-highlight)]/5 ${
           isVisible ? "animate-fade-in-down" : "opacity-0 translate-y-10"
         }`}
       >
-        <ul className="flex gap-5 font-family-subheader text-sm items-center">
+        <ul className="flex gap-2 font-family-subheader text-xs items-center">
           <li>
             <a
               href="#hero"
@@ -116,7 +116,7 @@ const Navbar = () => {
             <a
               href="/Capoy, Christian_Resume.pdf"
               download="Capoy, Christian_Resume.pdf"
-              className="relative inline-flex items-center px-6 py-2 overflow-hidden text-sm font-medium text-[var(--color-highlight)] border-1 border-[var(--color-highlight)] rounded-full group transition-colors duration-200 hover:text-[var(--color-textmain)] hover:border-[var(--color-accent)]"
+              className="relative inline-flex items-center px-3 py-2 overflow-hidden text-xs font-medium text-[var(--color-highlight)]  border-[var(--color-highlight)] rounded-full group transition-colors duration-200 hover:text-[var(--color-textmain)] hover:border-[var(--color-accent)]"
             >
               <span className="absolute left-0 block w-full h-0 transition-all bg-[var(--color-accent)] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease z-0"></span>
               <span className="absolute right-0 flex items-center justify-start w-6 h-6 duration-100 transform translate-x-full group-hover:translate-x-0 ease z-10 transition-colors"></span>

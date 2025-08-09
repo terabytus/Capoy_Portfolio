@@ -7,9 +7,7 @@ const Hero = () => {
     <section
       id="hero"
       ref={ref}
-      className={`relative grid grid-cols-12 gap-6 min-h-screen bg-[var(--color-primary)] transition-all duration-1000 overflow-hidden px-4 sm:px-2 md:px-0 ${
-        isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
-      }`}
+      className="relative grid grid-cols-12 gap-6 min-h-screen bg-[var(--color-primary)] transition-all duration-1000 overflow-hidden px-4 sm:px-2 md:px-0"
     >
       {/* Floating Japanese elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -213,18 +211,38 @@ const Hero = () => {
       </div>
 
       <div className="col-span-12 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8 z-20 relative flex flex-col justify-center min-h-screen items-start text-start sm:items-start sm:text-left">
-        <h1 className="font-family-header text-1xl sm:text-3xl md:text-2xl mb-2 text-[var(--color-highlight)]">
+        <h1
+          className={`font-family-header text-1xl sm:text-3xl md:text-2xl mb-2 text-[var(--color-highlight)] transition-all duration-700 ${
+            isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "100ms" }}
+        >
           Hi, I'm
         </h1>
-        <h1 className="font-family-accent text-7xl sm:text-7xl md:text-9xl mb-4 text-[var(--color-accent)]">
+        <h1
+          className={`font-family-accent text-7xl sm:text-7xl md:text-9xl mb-4 text-[var(--color-accent)] transition-all duration-700 ${
+            isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "300ms" }}
+        >
           CHRISTIAN
         </h1>
-        <h2 className="font-family-subheader font-bold text-xl sm:text-3xl md:text-3xl mb-6 text-[var(--color-highlight)]">
+        <h2
+          className={`font-family-subheader font-bold text-xl sm:text-3xl md:text-3xl mb-6 text-[var(--color-highlight)] transition-all duration-700 ${
+            isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "500ms" }}
+        >
           Frontend Developer & UI/UX Designer
         </h2>
 
         <div className="mb-8">
-          <div className="flex flex-wrap justify-start sm:justify-start items-start space-x-0 sm:space-x-6 gap-4 sm:gap-0">
+          <div
+            className={`flex flex-wrap justify-start sm:justify-start items-start space-x-0 sm:space-x-6 gap-4 sm:gap-0 transition-all duration-700 ${
+              isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "700ms" }}
+          >
             <div className="group flex flex-col items-center">
               <div className="w-14 h-14 bg-[var(--color-highlight)]/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-[var(--color-highlight)]/20 transition-all duration-300 group-hover:bg-[var(--color-highlight)]/20 group-hover:scale-105">
                 <img
@@ -307,7 +325,10 @@ const Hero = () => {
 
         <a
           href="#projects"
-          className="w-fit px-4 py-2 bg-transparent text-[var(--color-highlight)] font-family-subheader rounded-full border-2 border-[var(--color-highlight)] text-sm transition-all duration-300 hover:scale-105 hover:bg-[var(--color-accent)] hover:text-[var(--color-textmain)] hover:border-transparent hover:shadow-lg"
+          className={`w-fit px-4 py-2 bg-transparent text-[var(--color-highlight)] font-family-subheader rounded-full border-2 border-[var(--color-highlight)] text-sm transition-all duration-700 hover:scale-105 hover:bg-[var(--color-accent)] hover:text-[var(--color-textmain)] hover:border-transparent hover:shadow-lg ${
+            isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "900ms" }}
         >
           View Projects
         </a>
