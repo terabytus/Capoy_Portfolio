@@ -9,7 +9,7 @@ const projects = [
     description:
       "A Digital Platform Enhancing Client Interaction and Modernizing the Hairstyling Industry",
     image:
-      "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670957/freshclips_cover_ugg7uo.svg",
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754671068/freshclips_cover_zlwsqx.svg",
     myRole: "Product Designer | Developer",
     keyFeatures: [
       "Seamless Appointment Scheduling: Book instantly with real-time availability and never wait in a line again.",
