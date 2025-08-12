@@ -10,7 +10,7 @@ const projects = [
       "A Digital Platform Enhancing Client Interaction and Modernizing the Hairstyling Industry",
     image:
       "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754671068/freshclips_cover_zlwsqx.svg",
-    myRole: "Product Designer | Developer",
+    myRole: "End-to-End Development | UI/UX Design",
     keyFeatures: [
       "Seamless Appointment Scheduling: Book instantly with real-time availability and never wait in a line again.",
       "Unified Barber Platform: Discover and book with both traditional barbershops and talented independent stylists in one app.",
@@ -38,7 +38,37 @@ const projects = [
 
     problem:
       "Clients and barbers are currently disconnected by an inefficient and fragmented booking ecosystem. Clients struggle to find and book appointments with trustworthy, quality barbers, leading to wasted time waiting in lines and uncertainty about service quality. Traditional methods are inconvenient and offer little transparency into a barber's specialized skills or hygiene standards. Freelance barbers and hairstylists, on the other hand, lack a centralized platform to manage their schedules, showcase their work, and grow their clientele beyond their personal networks. This creates a significant gap where both parties are looking for a better solution.",
+    solution: [
+      "FreshClips is a digital platform that acts as a central hub for modernizing the hairstyling industry. It eliminates the pain points of traditional booking methods by focusing on convenience, quality, and trust.",
+      "For Clients: The app provides a single destination to easily find, vet, and book appointments with confidence.",
+      "For Stylists: The platform offers tools to manage their bookings, showcase their work, and connect with clients seamlessly.",
+      "This solution empowers both clients and stylists by streamlining the booking process, enhancing transparency, and fostering stronger professional relationships. By leveraging modern technology, FreshClips bridges the gap between user needs and business goals, delivering a seamless experience for everyone involved.",
+    ],
+    challenges: [
+      {
+        title: "Balancing the Dual-User Experience",
+        challenge:
+          "The needs of a client, who primarily focuses on Browse and booking, are very different from those of a barber, who must manage a schedule and update a portfolio.",
+        solution:
+          "I tackled this with a clear, component-based architecture and a context-sensitive UI. By separating user flows and using reusable components, I ensured a clean and focused experience for each user without cluttering the interface.",
+      },
+      {
+        title: "Real-time Data & State Management",
+        challenge:
+          "Managing real-time data for features like appointment scheduling and in-app messaging. The calendar needed to update instantly for both the client and the barber to prevent double-bookings, and messages had to be delivered without delay.",
+        solution:
+          "I leveraged Firebase's real-time database and integrated it with Flutter's state management. This ensured that all data was consistent and instantly updated across the platform, providing a seamless and reliable user experience.",
+      },
+      {
+        title: "Translating Design into a Scalable Component System",
+        challenge:
+          "Converting the high-fidelity designs from Figma into a robust and scalable frontend. The design had many custom components and interactions, which needed to be built efficiently while maintaining a single, performant codebase for Android.",
+        solution:
+          "I built a comprehensive component library using Flutter. By creating a reusable design system directly from my Figma files, I was able to rapidly develop features and ensure pixel-perfect visual consistency across the entire application.",
+      },
+    ],
   },
+
   {
     id: 2,
     name: "TaRIDES",
@@ -46,12 +76,17 @@ const projects = [
       "A Community-based Mobile Application Designed for Cyclists and Hobbyists",
     image:
       "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670960/tarides_cover_oxdcax.svg",
-    myRole: "Product Designer | Developer",
+    researchImage:"https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
+    myRole: "UI/UX Design | Frontend Development",
     keyFeatures: [
       "GPS-based route tracking and sharing system",
       "Community features for cyclist groups and events",
       "Performance analytics and ride statistics",
       "Social networking features for cycling enthusiasts",
+      "Community-Driven Challenges: Fosters friendly competition through community-based events, games, and competitions to boost user engagement.",
+      'Real-Time Geolocation Support: Ensures safety and convenience with a "Helping Hand" feature and an integrated map to find nearby assistance and essential services.',
+      "Personalized Goal Tracking: Provides a structured path to fitness goals with the \"Goal 30 Challenge\" and allows users to create their own custom activity templates.",
+      "Gamified Rewards & Recognition: Incentivizes continued activity with a badge and points system that can be redeemed for real-world freebies from local sponsors.",
     ],
     techStack: ["Flutter", "Firebase", "Figma"],
     technologies: [
@@ -70,35 +105,93 @@ const projects = [
     ],
     liveDemoUrl: "#",
     githubRepoUrl: "#",
+
+    problem:
+      "Despite the rise in cycling's popularity, the modern biker's experience is fragmented and often solitary. Existing fitness apps primarily focus on performance metrics, leaving a significant gap in community engagement and real-world support. Bikers routinely struggle with finding safe and engaging routes, locating nearby assistance for unexpected mechanical issues, and connecting with a like-minded community for shared challenges and motivation. This creates a disconnect between the solitary act of biking and the collective energy of the fitness community.",
+    solution:
+      "TaRIDES is a community-first digital platform designed to elevate the biking experience from a solitary activity to a collaborative one. It addresses the core frustrations of modern bikers by fusing robust fitness tracking with a powerful social and support network.",
+    challenges: [
+      {
+        title: "Designing for Dual Engagement",
+        challenge:
+          "The primary challenge was designing a user experience that seamlessly integrates a highly social, community-driven platform with a detailed, data-heavy fitness tracker. The UI had to prevent the social features from feeling like a distraction while ensuring the tracking features were intuitive and reliable.",
+        solution:
+          "I used a modular design approach, separating the 'Activities' and 'Community' flows into distinct but easily accessible sections. This was accomplished by building a component-based system in Flutter that allowed for a focused, contextual UI without overwhelming the user.",
+      },
+      {
+        title: "Implementing Real-Time Geo-Data and Performance",
+        challenge:
+          "Building a real-time tracking system that accurately records routes and finds nearby services using a geolocation-based API. This was complex, as it required careful optimization to prevent excessive battery drain while maintaining accuracy.",
+        solution:
+          "I integrated the Google Maps API to provide live routing and a 'Helping Hand' feature that locates nearby users. I learned to optimize API calls and implement efficient background tracking to balance a rich feature set with device performance and battery life.",
+      },
+      {
+        title: "Structuring a Scalable Game and Rewards System",
+        challenge:
+          "The app's core innovation lies in its community-based games, rankings, and a rewarding points system. The technical challenge was to design a scalable database schema in Firebase that could handle real-time scoring, individual rankings, and group challenges without performance bottlenecks.",
+        solution:
+          "I modeled the data structure in Firebase to prioritize quick reads for leaderboards and user profiles. This allowed me to create a robust and dynamic rewards system that automatically awards points and badges, ensuring the gamified elements were both engaging and technically sound.",
+      },
+    ],
   },
   {
-    id: 3,
-    name: "Mobile DTR",
-    description:
-      "From clock-in to clock-out, our All-in-One Employee DTR keeps your business running smoothly – anytime, anywhere.",
-    image:
-      "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670916/mobile_dtr_cover_olg97r.svg",
-    myRole: "Designed",
-    keyFeatures: [
-      "Biometric and QR code-based attendance system",
-      "Real-time attendance tracking and reporting",
-      "Geolocation-based check-in/check-out verification",
-      "Administrative dashboard for HR management",
-    ],
-    techStack: ["Figma", "Flutter"],
-    technologies: [
-      {
-        name: "Figma",
-        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
-      },
-      {
-        name: "Flutter",
-        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
-      },
-    ],
-    liveDemoUrl: "#",
-    githubRepoUrl: "#",
-  },
+  id: 3,
+  name: "Mobile DTR",
+  description:
+    "From clock-in to clock-out, our All-in-One Employee DTR keeps your business running smoothly – anytime, anywhere.",
+  image:
+    "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670916/mobile_dtr_cover_olg97r.svg",
+  myRole: "Designed | Built with Flutter",
+  keyFeatures: [
+    "Biometric and QR code-based attendance system",
+    "Real-time attendance tracking and reporting",
+    "Geolocation-based check-in/check-out verification",
+    "Administrative dashboard for HR management",
+    "Effortless Mobile Tracking: An intuitive and user-friendly interface allows employees to clock in and out from anywhere, providing the flexibility needed for a dynamic workforce.",
+    "Streamlined Management: The system offers a centralized dashboard for managers to easily track work hours, monitor attendance, and streamline the payroll process with accurate data.",
+    "Accuracy & Convenience: By digitizing the entire process, the app eliminates manual errors and provides a convenient, real-time record of all work hours, saving both time and resources.",
+  ],
+  techStack: ["Figma", "Flutter"],
+  technologies: [
+    {
+      name: "Figma",
+      icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
+    },
+    {
+      name: "Flutter",
+      icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
+    },
+  ],
+  liveDemoUrl: "#",
+  githubRepoUrl: "#",
+  problem:
+    "Traditional methods for employee timekeeping, such as manual timesheets and physical punch-clocks, are inefficient, prone to error, and lack the flexibility required by modern businesses. These outdated systems create administrative bottlenecks for managers, introduce payroll inaccuracies, and are completely unsuited for businesses with remote or on-site employees who work outside of a single location. The core problem is the absence of an efficient, accurate, and flexible digital solution to a fundamental business need.",
+  solution:
+    "The Mobile DTR is a comprehensive, all-in-one digital solution designed to modernize employee time and attendance tracking. The app's purpose is to replace outdated systems with a powerful, intuitive mobile platform that enhances efficiency and accuracy for businesses of all sizes. By focusing on convenience and reliability, the app empowers both employees and managers to streamline a critical daily process.",
+  challenges: [
+    {
+      title: "Designing for Simplicity and Reliability",
+      challenge:
+        "The primary design challenge was creating an interface so simple and intuitive that employees from any industry or technical background could use it reliably. The app's core function is critical to payroll, so there was no room for user error or confusion.",
+      solution:
+        "I focused on a minimalist UI with a single, prominent clock-in/out button. The design prioritized a clear user flow and a consistent experience across all devices, ensuring that the app's most important function was effortless and foolproof.",
+    },
+    {
+      title: "Building a Secure and Scalable Backend",
+      challenge:
+        "Handling sensitive employee data—including time records, work hours, and potentially location—required implementing a robust and secure backend. The system needed to be scalable to support a growing number of users from various businesses without compromising data integrity.",
+      solution:
+        "I designed a secure data model in Firebase with strict authentication rules to ensure that time records were accurate and tamper-proof. I learned to implement server-side validation and secure APIs to protect user data and ensure the system could handle enterprise-level usage.",
+    },
+    {
+      title: "Ensuring a Consistent Cross-Platform Experience",
+      challenge:
+        "To be an all-in-one solution for diverse businesses, the app needed to provide a seamless and identical experience on both iOS and Android. This required solving the challenge of maintaining a single codebase while delivering a native feel on each platform.",
+      solution:
+        "I leveraged a cross-platform framework like Flutter to build the application. This allowed for a single, unified codebase while ensuring the UI was consistent and the performance was high on all mobile devices.",
+    },
+  ],
+},
   {
     id: 4,
     name: "Design Concepts",
@@ -246,7 +339,9 @@ const ProjectsSection = ({ shouldStartAnimation }) => {
             ...selectedProject,
             heroImage: selectedProject.image,
             problem: selectedProject.problem,
+            solution: selectedProject.solution,
             researchImage:
+              selectedProject.researchImage ||
               "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
             wireframeImage:
               "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
