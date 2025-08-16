@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Korosu";
-  src: url("./assets/fonts/korosu.otf") format("opentype");
+  src: url("./assets/fonts/korosu.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "Borney";
-  src: url("./assets/fonts/borney-regular.otf") format("opentype");
+  src: url("./assets/fonts/borney-regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
