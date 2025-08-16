@@ -30,18 +30,17 @@ const HybridProjectModal = ({ project, onClose }) => {
   // Prevent body scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    // Hide navbar when modal opens
-    const navbar = document.querySelector("nav");
-    if (navbar) {
-      navbar.style.display = "none";
-    }
-
+    // Hide all navbars when modal opens
+    document.querySelectorAll("nav").forEach(nav => {
+      nav.style.display = "none";
+    });
+  
     return () => {
       document.body.style.overflow = "unset";
-      // Show navbar when modal closes
-      if (navbar) {
-        navbar.style.display = "";
-      }
+      // Show all navbars when modal closes
+      document.querySelectorAll("nav").forEach(nav => {
+        nav.style.display = "";
+      });
     };
   }, []);
 
