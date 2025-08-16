@@ -13,7 +13,6 @@ const Contacts = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -46,7 +45,6 @@ const Contacts = () => {
     const fieldMap = {
       from_name: "name",
       from_email: "email",
-      subject: "subject",
       message: "message",
     };
 
@@ -78,7 +76,7 @@ const Contacts = () => {
     const templateParams = {
       from_name: formData.name, // matches {{from_name}} in template
       from_email: formData.email, // matches {{from_email}} in template
-      subject: formData.subject || "New Contact Form Message",
+      subject: "New Contact Form Message",
       message: formData.message, // matches {{message}} in template
       to_name: "Crey",
       reply_to: formData.email,
@@ -103,7 +101,7 @@ const Contacts = () => {
       setTimeout(() => setIsSubmitted(false), 5000);
 
       // Reset form
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("EmailJS error details:", {
         error,
@@ -440,24 +438,6 @@ const Contacts = () => {
                     required
                     className="w-full px-3 py-2 bg-[var(--color-primary)]/20 backdrop-blur-sm border border-[var(--color-highlight)]/20 rounded-xl text-[var(--color-textmain)] font-family-subheader focus:border-[var(--color-highlight)] focus:outline-none transition-all duration-300 placeholder-[var(--color-highlight)]/50"
                     placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-[var(--color-highlight)] font-family-subheader mb-1 text-sm"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 bg-[var(--color-primary)]/20 backdrop-blur-sm border border-[var(--color-highlight)]/20 rounded-xl text-[var(--color-textmain)] font-family-subheader focus:border-[var(--color-highlight)] focus:outline-none transition-all duration-300 placeholder-[var(--color-highlight)]/50"
-                    placeholder="What's this about?"
                   />
                 </div>
 

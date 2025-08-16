@@ -76,7 +76,8 @@ const projects = [
       "A Community-based Mobile Application Designed for Cyclists and Hobbyists",
     image:
       "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670960/tarides_cover_oxdcax.svg",
-    researchImage:"https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
+    researchImage:
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
     myRole: "UI/UX Design | Frontend Development",
     keyFeatures: [
       "GPS-based route tracking and sharing system",
@@ -85,7 +86,7 @@ const projects = [
       "Social networking features for cycling enthusiasts",
       "Community-Driven Challenges: Fosters friendly competition through community-based events, games, and competitions to boost user engagement.",
       'Real-Time Geolocation Support: Ensures safety and convenience with a "Helping Hand" feature and an integrated map to find nearby assistance and essential services.',
-      "Personalized Goal Tracking: Provides a structured path to fitness goals with the \"Goal 30 Challenge\" and allows users to create their own custom activity templates.",
+      'Personalized Goal Tracking: Provides a structured path to fitness goals with the "Goal 30 Challenge" and allows users to create their own custom activity templates.',
       "Gamified Rewards & Recognition: Incentivizes continued activity with a badge and points system that can be redeemed for real-world freebies from local sponsors.",
     ],
     techStack: ["Flutter", "Firebase", "Figma"],
@@ -135,63 +136,63 @@ const projects = [
     ],
   },
   {
-  id: 3,
-  name: "Mobile DTR",
-  description:
-    "From clock-in to clock-out, our All-in-One Employee DTR keeps your business running smoothly – anytime, anywhere.",
-  image:
-    "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670916/mobile_dtr_cover_olg97r.svg",
-  myRole: "Designed | Built with Flutter",
-  keyFeatures: [
-    "Biometric and QR code-based attendance system",
-    "Real-time attendance tracking and reporting",
-    "Geolocation-based check-in/check-out verification",
-    "Administrative dashboard for HR management",
-    "Effortless Mobile Tracking: An intuitive and user-friendly interface allows employees to clock in and out from anywhere, providing the flexibility needed for a dynamic workforce.",
-    "Streamlined Management: The system offers a centralized dashboard for managers to easily track work hours, monitor attendance, and streamline the payroll process with accurate data.",
-    "Accuracy & Convenience: By digitizing the entire process, the app eliminates manual errors and provides a convenient, real-time record of all work hours, saving both time and resources.",
-  ],
-  techStack: ["Figma", "Flutter"],
-  technologies: [
-    {
-      name: "Figma",
-      icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
-    },
-    {
-      name: "Flutter",
-      icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
-    },
-  ],
-  liveDemoUrl: "#",
-  githubRepoUrl: "#",
-  problem:
-    "Traditional methods for employee timekeeping, such as manual timesheets and physical punch-clocks, are inefficient, prone to error, and lack the flexibility required by modern businesses. These outdated systems create administrative bottlenecks for managers, introduce payroll inaccuracies, and are completely unsuited for businesses with remote or on-site employees who work outside of a single location. The core problem is the absence of an efficient, accurate, and flexible digital solution to a fundamental business need.",
-  solution:
-    "The Mobile DTR is a comprehensive, all-in-one digital solution designed to modernize employee time and attendance tracking. The app's purpose is to replace outdated systems with a powerful, intuitive mobile platform that enhances efficiency and accuracy for businesses of all sizes. By focusing on convenience and reliability, the app empowers both employees and managers to streamline a critical daily process.",
-  challenges: [
-    {
-      title: "Designing for Simplicity and Reliability",
-      challenge:
-        "The primary design challenge was creating an interface so simple and intuitive that employees from any industry or technical background could use it reliably. The app's core function is critical to payroll, so there was no room for user error or confusion.",
-      solution:
-        "I focused on a minimalist UI with a single, prominent clock-in/out button. The design prioritized a clear user flow and a consistent experience across all devices, ensuring that the app's most important function was effortless and foolproof.",
-    },
-    {
-      title: "Building a Secure and Scalable Backend",
-      challenge:
-        "Handling sensitive employee data—including time records, work hours, and potentially location—required implementing a robust and secure backend. The system needed to be scalable to support a growing number of users from various businesses without compromising data integrity.",
-      solution:
-        "I designed a secure data model in Firebase with strict authentication rules to ensure that time records were accurate and tamper-proof. I learned to implement server-side validation and secure APIs to protect user data and ensure the system could handle enterprise-level usage.",
-    },
-    {
-      title: "Ensuring a Consistent Cross-Platform Experience",
-      challenge:
-        "To be an all-in-one solution for diverse businesses, the app needed to provide a seamless and identical experience on both iOS and Android. This required solving the challenge of maintaining a single codebase while delivering a native feel on each platform.",
-      solution:
-        "I leveraged a cross-platform framework like Flutter to build the application. This allowed for a single, unified codebase while ensuring the UI was consistent and the performance was high on all mobile devices.",
-    },
-  ],
-},
+    id: 3,
+    name: "Mobile DTR",
+    description:
+      "From clock-in to clock-out, our All-in-One Employee DTR keeps your business running smoothly – anytime, anywhere.",
+    image:
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670916/mobile_dtr_cover_olg97r.svg",
+    myRole: "Designed | Built with Flutter",
+    keyFeatures: [
+      "Biometric and QR code-based attendance system",
+      "Real-time attendance tracking and reporting",
+      "Geolocation-based check-in/check-out verification",
+      "Administrative dashboard for HR management",
+      "Effortless Mobile Tracking: An intuitive and user-friendly interface allows employees to clock in and out from anywhere, providing the flexibility needed for a dynamic workforce.",
+      "Streamlined Management: The system offers a centralized dashboard for managers to easily track work hours, monitor attendance, and streamline the payroll process with accurate data.",
+      "Accuracy & Convenience: By digitizing the entire process, the app eliminates manual errors and provides a convenient, real-time record of all work hours, saving both time and resources.",
+    ],
+    techStack: ["Figma", "Flutter"],
+    technologies: [
+      {
+        name: "Figma",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg",
+      },
+      {
+        name: "Flutter",
+        icon: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg",
+      },
+    ],
+    liveDemoUrl: "#",
+    githubRepoUrl: "#",
+    problem:
+      "Traditional methods for employee timekeeping, such as manual timesheets and physical punch-clocks, are inefficient, prone to error, and lack the flexibility required by modern businesses. These outdated systems create administrative bottlenecks for managers, introduce payroll inaccuracies, and are completely unsuited for businesses with remote or on-site employees who work outside of a single location. The core problem is the absence of an efficient, accurate, and flexible digital solution to a fundamental business need.",
+    solution:
+      "The Mobile DTR is a comprehensive, all-in-one digital solution designed to modernize employee time and attendance tracking. The app's purpose is to replace outdated systems with a powerful, intuitive mobile platform that enhances efficiency and accuracy for businesses of all sizes. By focusing on convenience and reliability, the app empowers both employees and managers to streamline a critical daily process.",
+    challenges: [
+      {
+        title: "Designing for Simplicity and Reliability",
+        challenge:
+          "The primary design challenge was creating an interface so simple and intuitive that employees from any industry or technical background could use it reliably. The app's core function is critical to payroll, so there was no room for user error or confusion.",
+        solution:
+          "I focused on a minimalist UI with a single, prominent clock-in/out button. The design prioritized a clear user flow and a consistent experience across all devices, ensuring that the app's most important function was effortless and foolproof.",
+      },
+      {
+        title: "Building a Secure and Scalable Backend",
+        challenge:
+          "Handling sensitive employee data—including time records, work hours, and potentially location—required implementing a robust and secure backend. The system needed to be scalable to support a growing number of users from various businesses without compromising data integrity.",
+        solution:
+          "I designed a secure data model in Firebase with strict authentication rules to ensure that time records were accurate and tamper-proof. I learned to implement server-side validation and secure APIs to protect user data and ensure the system could handle enterprise-level usage.",
+      },
+      {
+        title: "Ensuring a Consistent Cross-Platform Experience",
+        challenge:
+          "To be an all-in-one solution for diverse businesses, the app needed to provide a seamless and identical experience on both iOS and Android. This required solving the challenge of maintaining a single codebase while delivering a native feel on each platform.",
+        solution:
+          "I leveraged a cross-platform framework like Flutter to build the application. This allowed for a single, unified codebase while ensuring the UI was consistent and the performance was high on all mobile devices.",
+      },
+    ],
+  },
   {
     id: 4,
     name: "Design Concepts",
@@ -199,7 +200,7 @@ const projects = [
       "The main purpose is to establish the general visual direction. The designs incorporate your current product photos and color palette for consistency",
     image:
       "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369420/design_concept_jh438z.png",
-    myRole: "Developed some features and designed",
+    myRole: "Designed",
     keyFeatures: [
       "Brand identity and visual design system",
       "UI/UX design for web and mobile platforms",
@@ -325,7 +326,7 @@ const ProjectsSection = ({ shouldStartAnimation }) => {
               {project.name}
             </h3>
 
-            <div className="font-family-subheader text-[var(--color-textmain)]/40 flex flex-wrap gap-2 mb-2">
+            <div className="font-family-subheader text-xs sm:text-sm md:text-base text-[var(--color-textmain)]/40 flex flex-wrap gap-2 mb-2">
               {project.myRole}
             </div>
           </div>
