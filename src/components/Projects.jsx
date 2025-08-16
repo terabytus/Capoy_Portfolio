@@ -5,6 +5,7 @@ import HybridProjectModal from "./HybridProjectModal";
 const projects = [
   {
     id: 1,
+    type: "hybrid",
     name: "FreshClips",
     description:
       "A Digital Platform Enhancing Client Interaction and Modernizing the Hairstyling Industry",
@@ -71,6 +72,7 @@ const projects = [
 
   {
     id: 2,
+    type: "hybrid",
     name: "TaRIDES",
     description:
       "A Community-based Mobile Application Designed for Cyclists and Hobbyists",
@@ -137,6 +139,7 @@ const projects = [
   },
   {
     id: 3,
+    type: "hybrid",
     name: "Mobile DTR",
     description:
       "From clock-in to clock-out, our All-in-One Employee DTR keeps your business running smoothly – anytime, anywhere.",
@@ -195,12 +198,15 @@ const projects = [
   },
   {
     id: 4,
+    type: "design-only",
     name: "Design Concepts",
-    description:
-      "The main purpose is to establish the general visual direction. The designs incorporate your current product photos and color palette for consistency",
+    problem:
+      "The challenge was to establish a clear visual direction for a new brand, ensuring consistency across all products and marketing materials.",
+    solution:
+      "The solution involved creating a series of web and mobile design concepts to establish a brand identity, visual system, and color palette.",
     image:
       "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369420/design_concept_jh438z.png",
-    myRole: "Designed",
+    myRole: "UI/UX Designer",
     keyFeatures: [
       "Brand identity and visual design system",
       "UI/UX design for web and mobile platforms",
@@ -215,7 +221,33 @@ const projects = [
       },
     ],
     liveDemoUrl: "#",
-    githubRepoUrl: "#",
+    designChallenges: [
+      {
+        heading: "Designing a Cohesive Visual System",
+        text: "The main challenge was ensuring consistency across multiple concepts and platforms. I created a robust design system in Figma to define reusable components, typography, and color palettes for a unified brand identity.",
+      },
+      {
+        heading: "Iterating on User Feedback",
+        text: "The initial concepts were refined after gathering feedback. I learned to identify key user pain points and make data-driven design decisions to improve the overall user experience.",
+      },
+    ],
+    designJourney: [
+      {
+        image:
+          "https://res.cloudinary.com/your-cloud/image/upload/alexander_aronowitz.png",
+        text: "My process began with user research and persona creation to define the target audience and their needs, exemplified here by the persona for 'Alexander Aronowitz'.",
+      },
+      {
+        image:
+          "https://res.cloudinary.com/your-cloud/image/upload/design_concepts_high_res.png",
+        text: "Next, I explored various 'Design Concepts' to establish the overall visual direction and brand identity for the project.",
+      },
+      {
+        image:
+          "https://res.cloudinary.com/your-cloud/image/upload/high_fidelity_ui_final.png",
+        text: "Finally, I polished the visual design into a high-fidelity prototype, focusing on clean UI, effective typography, and a seamless user experience.",
+      },
+    ],
   },
 ];
 
