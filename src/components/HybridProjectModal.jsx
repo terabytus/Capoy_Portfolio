@@ -5,6 +5,10 @@ const HybridProjectModal = ({ project, onClose }) => {
   // Determine project type based on available properties
   const isHybridProject = project.type === "hybrid";
   const isDesignOnly = project.type === "design-only";
+  
+  // Default image sizes - can be customized per project
+  const researchImageSize = project.researchImageSize || "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72";
+  const wireframeImageSize = project.wireframeImageSize || "h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64";
 
   // Handle escape key press
   useEffect(() => {
@@ -150,11 +154,11 @@ const HybridProjectModal = ({ project, onClose }) => {
               {project.researchImage && (
                 <div className="col-span-12 bg-[var(--color-primary)]/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4">
                   <div className="flex flex-col lg:flex-row gap-3 sm:gap-4">
-                    <div className="w-full lg:w-2/3 bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96">
+                    <div className={`w-full lg:w-2/3 bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-md ${researchImageSize} flex items-center justify-center`}>
                       <img
                         src={project.researchImage}
-                        alt="User research and persona"
-                        className="w-full h-full object-cover"
+                        alt={`${project.name} user research and persona`}
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     <div className="lg:w-1/3 flex flex-col justify-center">
@@ -173,16 +177,29 @@ const HybridProjectModal = ({ project, onClose }) => {
                 </div>
               )}
 
+
+
               {/* Wireframes - Bottom Left */}
-              {project.wireframeImage && (
+              {project.wireframeImage && project.name !== "Design Concepts" && (
                 <div className="col-span-12 md:col-span-6 bg-[var(--color-primary)]/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4">
                   <div className="flex flex-col h-full">
-                    <div className="bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md mb-2 sm:mb-3 h-40 sm:h-48 md:h-56 lg:h-64 xl:h-96">
-                      <img
-                        src={project.wireframeImage}
-                        alt="Low-fidelity wireframes"
-                        className="w-full h-full object-cover"
-                      />
+                    <div className={`bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md mb-2 sm:mb-3 ${wireframeImageSize} flex items-center justify-center`}>
+                      <div className="flex flex-col items-center justify-center text-gray-500">
+                        <svg 
+                          className="w-12 h-12 mb-2" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={1.5} 
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                        <span className="text-sm">Image not available</span>
+                      </div>
                     </div>
                     <h3 className="font-family-subheader text-[var(--color-highlight)] text-sm sm:text-base md:text-lg font-semibold mb-2">
                       Low-Fidelity Wireframes
@@ -197,10 +214,10 @@ const HybridProjectModal = ({ project, onClose }) => {
                 </div>
               )}
 
-              {/* Final Design - Bottom Right */}
+              {/* Final Design */}
               {project.finalDesignImage && (
-                <div className="col-span-12 md:col-span-6 bg-[var(--color-primary)]/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4">
-                  <div className="bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md mb-2 sm:mb-3 h-40 sm:h-48 md:h-56 lg:h-64 xl:h-96">
+                <div className={`col-span-12 ${project.wireframeImage && project.name !== "Design Concepts" ? "md:col-span-6" : ""} bg-[var(--color-primary)]/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4`}>
+                  <div className="bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md mb-2 sm:mb-3 h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64">
                     <img
                       src={project.finalDesignImage}
                       alt="High-fidelity UI design"
@@ -219,17 +236,6 @@ const HybridProjectModal = ({ project, onClose }) => {
 
                   {/* Action Buttons - Show different buttons based on project type */}
                   <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 md:gap-4">
-                    {/* Live Demo - Available for both project types */}
-                    {project.liveDemoUrl && (
-                      <a
-                        href={project.liveDemoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 font-medium bg-[var(--color-accent)] hover:bg-[var(--color-accent)] text-[var(--color-textmain)] rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-highlight)] focus:ring-offset-2 text-xs sm:text-sm md:text-base"
-                      >
-                        {isHybridProject ? "Live Demo" : "View Design"}
-                      </a>
-                    )}
 
                     {/* GitHub Repository - Only for hybrid projects */}
                     {isHybridProject && project.githubRepoUrl && (
@@ -342,7 +348,7 @@ const HybridProjectModal = ({ project, onClose }) => {
                       key={toolIdx}
                       className="flex flex-col items-center gap-1 sm:gap-2"
                     >
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-[var(--color-accent)]/20 backdrop-blur-sm border border-white/20 hover:bg-[var(--color-accent)]/20 transition-all duration-300 scale-100 hover:scale-110">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-[var(--color-highlight)]/20 backdrop-blur-sm border border-white/20 hover:bg-[var(--color-highlight)]/20 transition-all duration-300 scale-100 hover:scale-110">
                         <img
                           src={tool.icon}
                           alt={tool.name}
@@ -362,7 +368,7 @@ const HybridProjectModal = ({ project, onClose }) => {
                       key={techIdx}
                       className="flex flex-col items-center gap-1 sm:gap-2"
                     >
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-[var(--color-accent)]/20 backdrop-blur-sm border border-white/20 hover:bg-[var(--color-accent)]/20 transition-all duration-300 scale-100 hover:scale-110">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-[var(--color-highlight)]/20 backdrop-blur-sm border border-white/20 hover:bg-[var(--color-highlight)]/20 transition-all duration-300 scale-100 hover:scale-110">
                         <img
                           src={tech.icon}
                           alt={tech.name}

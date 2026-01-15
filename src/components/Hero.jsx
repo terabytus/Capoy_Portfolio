@@ -210,125 +210,33 @@ const Hero = () => {
         ></div>
       </div>
 
-      <div className="col-span-12 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8 z-20 relative flex flex-col justify-center min-h-screen items-start text-start sm:items-start sm:text-left">
-        <h1
-          className={`font-family-header text-1xl sm:text-3xl md:text-2xl mb-2 text-[var(--color-highlight)] transition-all duration-700 ${
+      <div className="col-span-12 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8 z-20 relative flex flex-col justify-center min-h-screen items-center text-center">
+       <h1
+          className={`font-family-accent font-bold text-2xl sm:text-4xl md:text-5xl lg:text-7xl leading-snug mb-4 text-[var(--color-highlight)] max-w-4xl sm:max-w-5xl mx-auto break-words transition-all duration-700 ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "100ms" }}
         >
-          Hi, I'm
+          <span className="block">You bring the <span className="text-[var(--color-accent)]">VISION</span>.</span>
+          <span className="block">I'll build the <span className="text-[var(--color-accent)]">SOLUTION</span>.</span>
         </h1>
-        <h1
-          className={`font-family-accent text-7xl sm:text-7xl md:text-9xl mb-4 text-[var(--color-accent)] transition-all duration-700 ${
-            isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
-          }`}
-          style={{ transitionDelay: "300ms" }}
-        >
-          CHRISTIAN
-        </h1>
+
         <h2
-          className={`font-family-subheader font-bold text-xl sm:text-3xl md:text-3xl mb-6 text-[var(--color-highlight)] transition-all duration-700 ${
+          className={`font-family-subheader text-20 mb-6 text-[var(--color-highlight)] transition-all duration-700 ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
           }`}
-          style={{ transitionDelay: "500ms" }}
+          style={{ transitionDelay: "200ms" }}
         >
-          Frontend Developer & UI/UX Designer
+          I help businesses solve problems and reach more customers through
+          high-performance digital products.
         </h2>
 
-        <div className="mb-8">
-          <div
-            className={`flex flex-wrap justify-start sm:justify-start items-start space-x-0 sm:space-x-6 gap-4 sm:gap-0 transition-all duration-700 ${
-              isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
-            }`}
-            style={{ transitionDelay: "700ms" }}
-          >
-            <div className="group flex flex-col items-center">
-              <div className="w-14 h-14 bg-[var(--color-highlight)]/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-[var(--color-highlight)]/20 transition-all duration-300 group-hover:bg-[var(--color-highlight)]/20 group-hover:scale-105">
-                <img
-                  src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369677/react_ctpwcs.svg"
-                  alt="React"
-                  className="w-8 h-8 transition-transform duration-300"
-                />
-              </div>
-              <span className="text-xs text-[var(--color-highlight)]/70 mt-2 font-family-subheader">
-                React
-              </span>
-            </div>
-
-            <div className="group flex flex-col items-center">
-              <div className="w-14 h-14 bg-[var(--color-highlight)]/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-[var(--color-highlight)]/20 transition-all duration-300 group-hover:bg-[var(--color-highlight)]/20 group-hover:scale-105">
-                <img
-                  src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369678/tailwind_lshwvr.svg"
-                  alt="Tailwind CSS"
-                  className="w-8 h-8 transition-transform duration-300"
-                />
-              </div>
-              <span className="text-xs text-[var(--color-highlight)]/70 mt-2 font-family-subheader">
-                Tailwind
-              </span>
-            </div>
-
-            <div className="group flex flex-col items-center">
-              <div className="w-14 h-14 bg-[var(--color-highlight)]/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-[var(--color-highlight)]/20 transition-all duration-300 group-hover:bg-[var(--color-highlight)]/20 group-hover:scale-105">
-                <img
-                  src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369666/flutter_qkynvr.svg"
-                  alt="Flutter"
-                  className="w-6 h-6 transition-transform duration-300"
-                />
-              </div>
-              <span className="text-xs text-[var(--color-highlight)]/70 mt-2 font-family-subheader">
-                Flutter
-              </span>
-            </div>
-
-            <div className="group flex flex-col items-center">
-              <div className="w-14 h-14 bg-[var(--color-highlight)]/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-[var(--color-highlight)]/20 transition-all duration-300 group-hover:bg-[var(--color-highlight)]/20 group-hover:scale-105">
-                <img
-                  src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369673/javascript_jbbbkj.svg"
-                  alt="JavaScript"
-                  className="w-6 h-6 transition-transform duration-300"
-                />
-              </div>
-              <span className="text-xs text-[var(--color-highlight)]/70 mt-2 font-family-subheader">
-                JavaScript
-              </span>
-            </div>
-
-            <div className="group flex flex-col items-center">
-              <div className="w-14 h-14 bg-[var(--color-highlight)]/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-[var(--color-highlight)]/20 transition-all duration-300 group-hover:bg-[var(--color-highlight)]/20 group-hover:scale-105">
-                <img
-                  src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369667/firebase_fmdmuf.svg"
-                  alt="Firebase"
-                  className="w-8 h-8 transition-transform duration-300"
-                />
-              </div>
-              <span className="text-xs text-[var(--color-highlight)]/70 mt-2 font-family-subheader">
-                Firebase
-              </span>
-            </div>
-
-            <div className="group flex flex-col items-center">
-              <div className="w-14 h-14 bg-[var(--color-highlight)]/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-[var(--color-highlight)]/20 transition-all duration-300 group-hover:bg-[var(--color-highlight)]/20 group-hover:scale-105">
-                <img
-                  src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369665/figma_rzpupt.svg"
-                  alt="Figma"
-                  className="w-8 h-8 transition-transform duration-300"
-                />
-              </div>
-              <span className="text-xs text-[var(--color-highlight)]/70 mt-2 font-family-subheader">
-                Figma
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <a
+          <a
           href="#projects"
-          className={`w-fit px-4 py-2 bg-transparent text-[var(--color-highlight)] font-family-subheader rounded-full border-2 border-[var(--color-highlight)] text-sm transition-all duration-700 hover:scale-105 hover:bg-[var(--color-accent)] hover:text-[var(--color-textmain)] hover:border-transparent hover:shadow-lg ${
+          className={`w-fit px-4 py-2 bg-[var(--color-accent)] text-[var(--color-highlight)] font-family-subheader rounded-full border-2 border-[var(--color-accent)] text-sm font-normal transition-all duration-100 ease-in-out hover:scale-105 hover:shadow-lg hover:font-semibold active:scale-95 transform ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
           }`}
-          style={{ transitionDelay: "900ms" }}
+          style={{ transitionDelay: "0ms" }}
         >
           View Projects
         </a>

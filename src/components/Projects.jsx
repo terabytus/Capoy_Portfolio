@@ -36,6 +36,8 @@ const projects = [
     ],
     liveDemoUrl: "#",
     githubRepoUrl: "#",
+    researchImage: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768483399/freshclips_user_persona_knsptq.png",
+    researchImageSize: "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72", // Uniform size for bento-style layout
 
     problem:
       "Clients and barbers are currently disconnected by an inefficient and fragmented booking ecosystem. Clients struggle to find and book appointments with trustworthy, quality barbers, leading to wasted time waiting in lines and uncertainty about service quality. Traditional methods are inconvenient and offer little transparency into a barber's specialized skills or hygiene standards. Freelance barbers and hairstylists, on the other hand, lack a centralized platform to manage their schedules, showcase their work, and grow their clientele beyond their personal networks. This creates a significant gap where both parties are looking for a better solution.",
@@ -79,7 +81,9 @@ const projects = [
     image:
       "https://res.cloudinary.com/dxsz6wu6j/image/upload/q_auto,f_auto/v1754670960/tarides_cover_oxdcax.svg",
     researchImage:
-      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
+      "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768483399/TaRides_user_persona_l3gwzn.png",
+    researchImageSize: "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72", // Uniform size for bento-style layout
+    wireframeImageSize: "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72", // Uniform size for bento-style layout
     myRole: "UI/UX Design | Frontend Development",
     keyFeatures: [
       "GPS-based route tracking and sharing system",
@@ -168,6 +172,9 @@ const projects = [
     ],
     liveDemoUrl: "#",
     githubRepoUrl: "#",
+    researchImage: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768483399/DTR_user_persona_hwfhmt.png", // Unique research image for Mobile DTR
+    researchImageSize: "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72", // Uniform size for bento-style layout
+    wireframeImageSize: "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72", // Uniform size for bento-style layout
     problem:
       "Traditional methods for employee timekeeping, such as manual timesheets and physical punch-clocks, are inefficient, prone to error, and lack the flexibility required by modern businesses. These outdated systems create administrative bottlenecks for managers, introduce payroll inaccuracies, and are completely unsuited for businesses with remote or on-site employees who work outside of a single location. The core problem is the absence of an efficient, accurate, and flexible digital solution to a fundamental business need.",
     solution:
@@ -221,6 +228,8 @@ const projects = [
       },
     ],
     liveDemoUrl: "#",
+    researchImage: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754369420/design_concept_jh438z.png", // Unique research image for Design Concepts
+    researchImageSize: "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72", // Uniform size for bento-style layout
     designChallenges: [
       {
         heading: "Designing a Cohesive Visual System",
@@ -374,12 +383,13 @@ const ProjectsSection = ({ shouldStartAnimation }) => {
             problem: selectedProject.problem,
             solution: selectedProject.solution,
             researchImage:
-              selectedProject.researchImage ||
-              "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
+              selectedProject.researchImage, // No fallback - each project should have unique research image
             wireframeImage:
               "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1754743719/user_persona_plsg85.svg",
             finalDesignImage: selectedProject.image,
             keyFeatures: selectedProject.keyFeatures,
+            researchImageSize: selectedProject.researchImageSize, // Pass custom research image size
+            wireframeImageSize: selectedProject.wireframeImageSize, // Pass custom wireframe image size
           }}
           onClose={handleCloseModal}
         />
