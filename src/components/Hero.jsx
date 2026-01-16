@@ -210,19 +210,25 @@ const Hero = () => {
         ></div>
       </div>
 
-      <div className="col-span-12 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8 z-20 relative flex flex-col justify-center min-h-screen items-center text-center">
-       <h1
-          className={`font-family-accent font-bold text-2xl sm:text-4xl md:text-5xl lg:text-7xl leading-snug mb-4 text-[var(--color-highlight)] max-w-4xl sm:max-w-5xl mx-auto break-words transition-all duration-700 ${
+      <div className="col-span-12 lg:col-start-2 lg:col-span-10 xl:col-start-2 xl:col-span-8 z-20 relative flex flex-col justify-center min-h-screen items-start text-left px-4 sm:px-6 lg:px-8">
+        <h1
+          className={`font-family-accent font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6 text-[var(--color-highlight)] max-w-6xl break-words transition-all duration-700 ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "100ms" }}
         >
-          <span className="block">You bring the <span className="text-[var(--color-accent)]">VISION</span>.</span>
-          <span className="block">I'll build the <span className="text-[var(--color-accent)]">SOLUTION</span>.</span>
+          <span className="block">
+            You bring the{" "}
+            <span className="text-[var(--color-accent)]">VISION</span>.
+          </span>
+          <span className="block">
+            I'll build the{" "}
+            <span className="text-[var(--color-accent)]">SOLUTION</span>.
+          </span>
         </h1>
 
         <h2
-          className={`font-family-subheader text-20 mb-6 text-[var(--color-highlight)] transition-all duration-700 ${
+          className={`font-family-subheader text-20 sm:text-xl md:text-xl lg:text-3xl xl:text-sm mb-8 text-[var(--color-highlight)] max-w-4xl transition-all duration-700 ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "200ms" }}
@@ -231,7 +237,7 @@ const Hero = () => {
           high-performance digital products.
         </h2>
 
-          <a
+        <a
           href="#projects"
           className={`w-fit px-4 py-2 bg-[var(--color-accent)] text-[var(--color-highlight)] font-family-subheader rounded-full border-2 border-[var(--color-accent)] text-sm font-normal transition-all duration-100 ease-in-out hover:scale-105 hover:shadow-lg hover:font-semibold active:scale-95 transform ${
             isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-10"

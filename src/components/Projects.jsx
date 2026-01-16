@@ -37,7 +37,9 @@ const projects = [
     liveDemoUrl: "#",
     githubRepoUrl: "#",
     researchImage: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768483399/freshclips_user_persona_knsptq.png",
+    wireframeImage: "https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768567762/freshclips_wireframe_hjnnqg.png",
     researchImageSize: "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72", // Uniform size for bento-style layout
+    wireframeImageSize: "h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64", // Uniform size for bento-style layout
 
     problem:
       "Clients and barbers are currently disconnected by an inefficient and fragmented booking ecosystem. Clients struggle to find and book appointments with trustworthy, quality barbers, leading to wasted time waiting in lines and uncertainty about service quality. Traditional methods are inconvenient and offer little transparency into a barber's specialized skills or hygiene standards. Freelance barbers and hairstylists, on the other hand, lack a centralized platform to manage their schedules, showcase their work, and grow their clientele beyond their personal networks. This creates a significant gap where both parties are looking for a better solution.",

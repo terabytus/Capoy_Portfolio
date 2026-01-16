@@ -47,3 +47,20 @@
 .animate-slideInUp {
   animation: slideInUp 0.5s ease-out forwards;
 }
+
+/* Lightbox styles */
+.lightbox-overlay {
+  backdrop-filter: blur(2px);
+}
+
+.lightbox-image {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.lightbox-close {
+  transition: all 0.2s ease-in-out;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.1);
+}

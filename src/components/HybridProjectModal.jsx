@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../HybridProjectModal.css";
 
 const HybridProjectModal = ({ project, onClose }) => {
@@ -9,6 +9,21 @@ const HybridProjectModal = ({ project, onClose }) => {
   // Default image sizes - can be customized per project
   const researchImageSize = project.researchImageSize || "h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72";
   const wireframeImageSize = project.wireframeImageSize || "h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64";
+
+  // Lightbox state
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxAlt, setLightboxAlt] = useState("");
+
+  // Lightbox handlers
+  const openLightbox = (imageSrc, imageAlt) => {
+    setLightboxImage(imageSrc);
+    setLightboxAlt(imageAlt);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxAlt("");
+  };
 
   // Handle escape key press
   useEffect(() => {
@@ -77,7 +92,7 @@ const HybridProjectModal = ({ project, onClose }) => {
         </button>
 
         {/* Header & Hero - Shows project type indicator */}
-        <header className="mb-6 sm:mb-8 md:mb-12 text-center px-4 sm:px-6 md:px-2">
+        <header className="mb-4 sm:mb-6 md:mb-8 text-center px-4 sm:px-6 md:px-2">
           <div className="mt-4 sm:mt-6 md:mt-8">
             <h1 className="font-family-header text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-accent)] mb-2 sm:mb-3 leading-tight">
               {project.name}
@@ -85,18 +100,6 @@ const HybridProjectModal = ({ project, onClose }) => {
             <p className="font-family-subheader text-sm sm:text-base md:text-lg lg:text-xl text-[var(--color-textmain)] font-base mb-4 sm:mb-6 md:mb-8">
               {project.description}
             </p>
-            <p className="font-family-subheader text-sm sm:text-base md:text-lg lg:text-xl text-[var(--color-highlight)] font-semibold mb-4 sm:mb-6 md:mb-8">
-              {project.myRole}
-            </p>
-          </div>
-
-          {/* Hero Image */}
-          <div className="aspect-video w-full mx-auto overflow-hidden bg-gray-100 shadow-md rounded-lg">
-            <img
-              src={project.heroImage}
-              alt={`${project.name} final design`}
-              className="w-full h-full object-cover"
-            />
           </div>
         </header>
 
@@ -157,8 +160,9 @@ const HybridProjectModal = ({ project, onClose }) => {
                     <div className={`w-full lg:w-2/3 bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-md ${researchImageSize} flex items-center justify-center`}>
                       <img
                         src={project.researchImage}
-                        alt={`${project.name} user research and persona`}
-                        className="w-full h-full object-contain"
+                        alt="User research and personas"
+                        className="w-full h-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => openLightbox(project.researchImage, "User research and personas")}
                       />
                     </div>
                     <div className="lg:w-1/3 flex flex-col justify-center">
@@ -180,26 +184,49 @@ const HybridProjectModal = ({ project, onClose }) => {
 
 
               {/* Wireframes - Bottom Left */}
-              {project.wireframeImage && project.name !== "Design Concepts" && (
+              {project.name !== "Design Concepts" && (
                 <div className="col-span-12 md:col-span-6 bg-[var(--color-primary)]/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4">
                   <div className="flex flex-col h-full">
                     <div className={`bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md mb-2 sm:mb-3 ${wireframeImageSize} flex items-center justify-center`}>
-                      <div className="flex flex-col items-center justify-center text-gray-500">
-                        <svg 
-                          className="w-12 h-12 mb-2" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={1.5} 
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                        <span className="text-sm">Image not available</span>
-                      </div>
+                      {project.name === "FreshClips" ? (
+                        <img
+                          src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768567762/freshclips_wireframe_hjnnqg.png"
+                          alt="Low-fidelity wireframes"
+                          className="w-full h-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => openLightbox("https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768567762/freshclips_wireframe_hjnnqg.png", "Low-fidelity wireframes")}
+                        />
+                      ) : project.name === "TaRIDES" ? (
+                        <img
+                          src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768579238/tarides_wireframe_yubukj.png"
+                          alt="Low-fidelity wireframes"
+                          className="w-full h-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => openLightbox("https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768579238/tarides_wireframe_yubukj.png", "Low-fidelity wireframes")}
+                        />
+                      ) : project.name === "Mobile DTR" ? (
+                        <img
+                          src="https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768579239/mobile_dtr_wireframe_evkguy.png"
+                          alt="Low-fidelity wireframes"
+                          className="w-full h-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => openLightbox("https://res.cloudinary.com/dxsz6wu6j/image/upload/v1768579239/mobile_dtr_wireframe_evkguy.png", "Low-fidelity wireframes")}
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center text-gray-500">
+                          <svg 
+                            className="w-12 h-12 mb-2" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                              strokeWidth={1.5} 
+                              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                          </svg>
+                          <span className="text-sm">Image not available</span>
+                        </div>
+                      )}
                     </div>
                     <h3 className="font-family-subheader text-[var(--color-highlight)] text-sm sm:text-base md:text-lg font-semibold mb-2">
                       Low-Fidelity Wireframes
@@ -216,23 +243,26 @@ const HybridProjectModal = ({ project, onClose }) => {
 
               {/* Final Design */}
               {project.finalDesignImage && (
-                <div className={`col-span-12 ${project.wireframeImage && project.name !== "Design Concepts" ? "md:col-span-6" : ""} bg-[var(--color-primary)]/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4`}>
-                  <div className="bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md mb-2 sm:mb-3 h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64">
-                    <img
-                      src={project.finalDesignImage}
-                      alt="High-fidelity UI design"
-                      className="w-full h-full object-cover"
-                    />
+                <div className="col-span-12 md:col-span-6 bg-[var(--color-primary)]/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4">
+                  <div className="flex flex-col h-full">
+                    <div className="bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md mb-2 sm:mb-3 h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64">
+                      <img
+                        src={project.finalDesignImage}
+                        alt="High-fidelity UI design"
+                        className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => openLightbox(project.finalDesignImage, "High-fidelity UI design")}
+                      />
+                    </div>
+                    <h3 className="font-family-subheader text-[var(--color-highlight)] text-sm sm:text-base md:text-lg font-semibold mb-2">
+                      High-Fidelity UI Design
+                    </h3>
+                    <p className="font-family-subheader text-[var(--color-textmain)] text-xs sm:text-sm mb-4 sm:mb-6 md:mb-8">
+                      Polishing the visual design with brand elements, typography,
+                      and interactions. The final UI design focused on
+                      accessibility, visual hierarchy, and creating an intuitive
+                      experience for all users.
+                    </p>
                   </div>
-                  <h3 className="font-family-subheader text-[var(--color-highlight)] text-sm sm:text-base md:text-lg font-semibold mb-2">
-                    High-Fidelity UI Design
-                  </h3>
-                  <p className="font-family-subheader text-[var(--color-textmain)] text-xs sm:text-sm mb-4 sm:mb-6 md:mb-8">
-                    Polishing the visual design with brand elements, typography,
-                    and interactions. The final UI design focused on
-                    accessibility, visual hierarchy, and creating an intuitive
-                    experience for all users.
-                  </p>
 
                   {/* Action Buttons - Show different buttons based on project type */}
                   <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 md:gap-4">
@@ -455,6 +485,30 @@ const HybridProjectModal = ({ project, onClose }) => {
           </section>
         )}
       </div>
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
+          onClick={closeLightbox}
+        >
+          <div className="relative max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center">
+            <img
+              src={lightboxImage}
+              alt={lightboxAlt}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              onClick={closeLightbox}
+              className="absolute -top-2 -right-2 text-white text-3xl hover:text-gray-300 bg-transparent rounded-full w-12 h-12 flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-black hover:bg-opacity-30 cursor-pointer"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
